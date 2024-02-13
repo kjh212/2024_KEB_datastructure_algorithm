@@ -6,21 +6,11 @@ for i in range (len(stack)-1,-1,-1):
     print(stack[i])
 print("--------------")
 
-data = stack[top]
-stack[top]=None
-top -= 1
-print("pop -->",data)
-
-data = stack[top]
-stack[top]=None
-top -= 1
-print("pop -->",data)
-
-data = stack[top]
-stack[top]=None
-top -= 1
-print("pop -->",data)
-print("----------------")
+while top >= 0 :
+    data = stack[top]
+    stack[top]=None
+    top -= 1
+    print("pop -->",data)
 
 print("----스택상태----")
 for i in range(len(stack)-1,-1,-1):
