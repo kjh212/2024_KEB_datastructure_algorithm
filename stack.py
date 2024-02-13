@@ -19,8 +19,46 @@ def push(data):
     top += 1
     stack[top]=data
 
-SIZE =5
+def pop():
+    global SIZE,stack,top
+    if (isStackEmpty()):
+        print("스택이 비어있음")
+        return None
+    data = stack[top]
+    stack[top]=None
+    top-=1
+    return data
+
+def peek():
+    global SIZE,stack,top
+    if (isStackEmpty()):
+        print("스택이 비어있음")
+        return None
+    return stack[top]
+
+SIZE = int(input("스택 크기를 입력하세요 ==> "))
 stack = [None for _ in range(SIZE)]
 top = -1
 
-print("스택이 비었는지 여부 ==>",isStackEmpty())
+if __name__ == "__main__":
+    select = input("삽입(I)/추출(E)/확인(V)/종료(X) 중 하나 선택 ==> ")
+
+    while (select !='X' and select !='x'):
+        if select =="i" or select == "I":
+            data = input("입력할 테이터 ==>")
+            push(data)
+            print("스택 상태 : ",stack)
+        elif select =="e" or select == 'E':
+            data=pop()
+            print("추출된 데이터 ==>",data)
+            print("스택 상태 : ",stack)
+        elif select =='v' or select == "V":
+            data=peek()
+            print("확인된 데이터 ==>",data)
+            print("스택 상태 : ",stack)
+        else :
+            print("입력이 잘못됨")
+
+        select = input("삽입(I)/추출(E)/확인(V)/종료(X) 중 하나 선택 ==> ")
+
+    print("프로그램 종료")
