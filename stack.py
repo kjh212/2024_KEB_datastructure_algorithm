@@ -1,17 +1,23 @@
-stack = ["커피","녹차","꿀물",None,None]
-top = 2
+def isStackFull():
+    global SIZE,stack,top
+    if (top >=SIZE-1):
+        return True
+    else:
+        return False
 
-print("----스택상태----")
-for i in range (len(stack)-1,-1,-1):
-    print(stack[i])
-print("--------------")
+def push(data):
+    global SIZE,stack,top
+    if(isStackFull()):
+        print("스택이 꽉찼습니다.")
+        return
+    top += 1
+    stack[top]=data
 
-while top >= 0 :
-    data = stack[top]
-    stack[top]=None
-    top -= 1
-    print("pop -->",data)
+SIZE =5
+stack = ["coffee","green tea","honye water","coke",None]
+top = 3
 
-print("----스택상태----")
-for i in range(len(stack)-1,-1,-1):
-    print(stack[i])
+print(stack)
+push("fanta")
+print(stack)
+push("getoray")
