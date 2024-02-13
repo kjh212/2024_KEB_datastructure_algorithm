@@ -1,3 +1,6 @@
+import webbrowser
+import time
+
 def isStackEmpty():
     global SIZE,stack,top
     if (top == -1):
@@ -41,24 +44,22 @@ stack = [None for _ in range(SIZE)]
 top = -1
 
 if __name__ == "__main__":
-    select = input("삽입(I)/추출(E)/확인(V)/종료(X) 중 하나 선택 ==> ")
+    urls = ['naver.com','daum.net','nate.com']
 
-    while (select !='X' and select !='x'):
-        if select =="i" or select == "I":
-            data = input("입력할 테이터 ==>")
-            push(data)
-            print("스택 상태 : ",stack)
-        elif select =="e" or select == 'E':
-            data=pop()
-            print("추출된 데이터 ==>",data)
-            print("스택 상태 : ",stack)
-        elif select =='v' or select == "V":
-            data=peek()
-            print("확인된 데이터 ==>",data)
-            print("스택 상태 : ",stack)
-        else :
-            print("입력이 잘못됨")
+    for url in urls:
+        push(url)
+        webbrowser.open('http://'+url)
+        print(url,end='-->')
+        time.sleep(1)
 
-        select = input("삽입(I)/추출(E)/확인(V)/종료(X) 중 하나 선택 ==> ")
+    print("방문 종료")
+    time.sleep(5)
 
-    print("프로그램 종료")
+    while True:
+        url = pop()
+        if url == None:
+            break
+        webbrowser.open('http://'+url)
+        print(url,end = '-->')
+        time.sleep(1)
+    print("방문 종료")
