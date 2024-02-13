@@ -1,3 +1,9 @@
+def isStackEmpty():
+    global SIZE,stack,top
+    if (top == -1):
+        return True
+    else:
+        return False
 def isStackFull():
     global SIZE,stack,top
     if (top >=SIZE-1):
@@ -14,10 +20,7 @@ def push(data):
     stack[top]=data
 
 SIZE =5
-stack = ["coffee","green tea","honye water","coke",None]
-top = 3
+stack = [None for _ in range(SIZE)]
+top = -1
 
-print(stack)
-push("fanta")
-print(stack)
-push("getoray")
+print("스택이 비었는지 여부 ==>",isStackEmpty())
