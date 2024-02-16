@@ -39,27 +39,37 @@ def peek():
         return None
     return stack[top]
 
+def checkBracket(expr):
+    for ch in expr:
+        if ch in '([{<':
+            push(ch)
+        elif ch in ')]}>':
+            out = pop()
+            if ch == ')' and out == '(':
+                pass
+            elif ch == ']' and out == '[':
+                pass
+            elif ch == '}' and out == '{':
+                pass
+            elif ch == '>' and out == '<':
+                pass
+            else:
+                return False
+        else:
+            pass
+    if isStackEmpty():
+        return True
+    else:
+        return False
+
 SIZE = int(input("스택 크기를 입력하세요 ==> "))
 stack = [None for _ in range(SIZE)]
 top = -1
 
 if __name__ == "__main__":
-    urls = ['naver.com','daum.net','nate.com']
 
-    for url in urls:
-        push(url)
-        webbrowser.open('http://'+url)
-        print(url,end='-->')
-        time.sleep(1)
+    exprAry = ['(A+B)',')A+B(', '((A+B)-C','(A+B]','(<A+{B-C}/[C*D]>)']
 
-    print("방문 종료")
-    time.sleep(5)
-
-    while True:
-        url = pop()
-        if url == None:
-            break
-        webbrowser.open('http://'+url)
-        print(url,end = '-->')
-        time.sleep(1)
-    print("방문 종료")
+    for expr in exprAry :
+        top -1
+        print(expr, '==>', checkBracket(expr))
